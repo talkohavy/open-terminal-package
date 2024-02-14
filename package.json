@@ -1,5 +1,5 @@
 {
-  "name": "@talkohavy/open-terminal-package",
+  "name": "open-terminal-package",
   "version": "0.0.1",
   "description": "A support package for the vscode extension `Open Terminal Programmatically`",
   "private": "true",
