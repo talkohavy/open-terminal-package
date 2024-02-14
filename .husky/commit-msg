@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo ""
+echo "---------------------"
+echo "Step 1: npm run lint"
+echo "--------------------"
+
+pnpm run lint
+
+echo "[32m√[39m lint check ran successfully! Everything seems ok."
+
+
+echo ""
+echo "----------------------"
+echo "Step 2: npm run format"
+echo "----------------------"
+
+npm run format
+
+echo ""
+echo "[32m√[39m Formatter check passed 100%"
+
+
+echo ""
+echo "  ____                              _  "
+echo " / ___| _   _  ___ ___ ___  ___ ___| | "
+echo " \___ \| | | |/ __/ __/ _ \/ __/ __| | "
+echo "  ___) | |_| | (_| (_|  __/\__ \__ \_| "
+echo " |____/ \__,_|\___\___\___||___/___(_) "
+echo ""
+
+echo "[32m√ Changes have been commited successfully![39m"
+echo ""

@@ -1,0 +1,69 @@
+{
+  "name": "@talkohavy/open-terminal-package",
+  "version": "0.0.1",
+  "description": "A support package for the vscode extension `Open Terminal Programmatically`",
+  "private": "true",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "index.d.ts",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "lint": "eslint -c ./.eslintrc.json --ignore-path ./.eslintignore 'src/**/*.{js,jsx,tsx,ts,d.ts,cjs,mjs}'",
+    "lint-fix": "eslint --fix -c ./.eslintrc.json --ignore-path ./.eslintignore 'src/**/*.{js,jsx,tsx,ts,d.ts,cjs,mjs}'",
+    "format": "biome format --verbose ./src",
+    "format-fix": "biome format --verbose ./src --write",
+    "format-prettier": "prettier . --check --config ./.prettierrc.js --ignore-path .prettierignore",
+    "format-prettier-fix": "prettier . --write --config ./.prettierrc.js --ignore-path .prettierignore",
+    "test": "node --test",
+    "preversion": "npm test",
+    "version": "npm run format-fix && npm run build",
+    "postversion": "git push && git push --tags && cd dist && npm publish",
+    "build:pre": "rm -rf dist",
+    "build:intermediate": "tsc -p jsconfig.json",
+    "build:post": "node ./toolbox/postBuild",
+    "build": "pnpm run build:pre && pnpm run build:intermediate && pnpm run build:post",
+    "prepare": "husky install"
+  },
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Tal Kohavy",
+      "email": "talkohavy@gmail.com",
+      "url": "https://github.com/talkohavy"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/talkohavy/open-terminal-package"
+  },
+  "author": "Tal Kohavy",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "restricted"
+  },
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/talkohavy/open-terminal-package/issues",
+    "email": "talkohavy@gmail.com"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.2",
+    "@types/node": "^20.11.0",
+    "eslint": "^8.54.0",
+    "eslint-plugin-ezlint": "^1.0.35",
+    "glob": "^10.3.10",
+    "husky": "^8.0.3",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "json5": "^2.2.3"
+  }
+}

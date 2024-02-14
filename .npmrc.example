@@ -1,0 +1,7 @@
+; bad config
+# _authToken=MYTOKEN
+
+; good config
+; Set a new registry for a scoped package
+# @scope:registry=https://www.npmjs.com/org/
+//registry.npmjs.org/:_authToken=npm_MYTOKEN
