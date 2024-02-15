@@ -16,13 +16,10 @@
     "format-prettier": "prettier . --check --config ./.prettierrc.js --ignore-path .prettierignore",
     "format-prettier-fix": "prettier . --write --config ./.prettierrc.js --ignore-path .prettierignore",
     "test": "node --test",
+    "build": "tsup --config tsup.config.js",
     "preversion": "npm test",
-    "version": "npm run format-fix && npm run build",
+    "version": "npm run format-prettier-fix && npm run build",
     "postversion": "git push && git push --tags && cd dist && npm publish",
-    "build:pre": "rm -rf dist",
-    "build:intermediate": "tsc -p jsconfig.json",
-    "build:post": "node ./toolbox/postBuild",
-    "build": "pnpm run build:pre && pnpm run build:intermediate && pnpm run build:post",
     "prepare": "husky install"
   },
   "sideEffects": false,
@@ -61,6 +58,6 @@
     "glob": "^10.3.10",
     "husky": "^8.0.3",
     "prettier": "^3.1.0",
-    "typescript": "^5.3.3"
+    "tsup": "^8.0.2"
   }
 }
