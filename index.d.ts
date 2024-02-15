@@ -17,7 +17,7 @@ type DebugConfig = {
 };
 
 type TerminalConfig = {
-  name: string;
+  name?: string;
   color?: 'red' | 'green' | 'blue' | 'yellow' | 'magenta' | 'cyan' | 'black' | 'white';
   command: string;
   runtimeArgs?: Array<string>;
