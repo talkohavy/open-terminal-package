@@ -6,9 +6,9 @@ const outDir = 'dist';
 // The `options` here is derived from CLI flags.
 const tsupConfig = defineConfig((_options) => ({
   entry: ['src/index.js'],
-  publicDir: './src',
+  // publicDir: './src',
   outDir, // <--- defaults to dist
-  bundle: false, // <--- defaults to true.
+  // bundle: false, // <--- defaults to true.
   format: ['esm'], // <-- If package.json type is set to module, the filenames are: [.js,.cjs], else: [.mjs, .js].
   splitting: false, // <--- defaults to true. Code splitting currently only works with the esm output format.
   treeshake: true, // <--- esbuild has tree shaking enabled by default, but sometimes it's not working very well, so tsup offers an additional option to let you use Rollup for tree shaking instead. This flag will enable Rollup for tree shaking.
@@ -21,15 +21,11 @@ const tsupConfig = defineConfig((_options) => ({
   async onSuccess() {
     copyTheReadmeFile();
 
-    // copyTheNpmrcFile();
+    copyIndexDtsFile();
 
-    copyThePackageJsonFile();
+    copyAndManipulatePackageJsonFile();
 
-    // Step 5: run the cleanup function
-    return () => {
-      // cleanupFunction()
-      console.log('DONE !!!');
-    };
+    return () => console.log('DONE !!!');
   },
 }));
 
@@ -39,13 +35,13 @@ function copyTheReadmeFile() {
   readStreamReadmeMd.pipe(writeStreamReadmeMd);
 }
 
-// function copyTheNpmrcFile() {
-//   const readStreamNpmrc = fs.createReadStream('./.npmrc');
-//   const writeStreamNpmrc = fs.createWriteStream(`./${outDir}/.npmrc`);
-//   readStreamNpmrc.pipe(writeStreamNpmrc);
-// }
+function copyIndexDtsFile() {
+  const readStream = fs.createReadStream('./index.d.ts');
+  const writeStream = fs.createWriteStream(`./${outDir}/index.d.ts`);
+  readStream.pipe(writeStream);
+}
 
-function copyThePackageJsonFile() {
+function copyAndManipulatePackageJsonFile() {
   const packageJson = JSON.parse(fs.readFileSync('./package.json').toString());
 
   // - Remove all scripts
