@@ -3,8 +3,8 @@
   "version": "0.0.4",
   "description": "A support package for the vscode extension `Open Terminal Programmatically`",
   "private": "true",
-  "main": "lib/index.js",
-  "module": "lib/index.js",
+  "main": "index.js",
+  "module": "index.js",
   "types": "index.d.ts",
   "type": "module",
   "scripts": {
@@ -42,8 +42,8 @@
   },
   "exports": {
     ".": {
-      "import": "./lib/index.js",
-      "require": "./lib/index.cjs"
+      "import": "./index.js",
+      "require": "./index.cjs"
     }
   },
   "bugs": {
