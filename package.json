@@ -7,6 +7,12 @@
   "module": "index.js",
   "types": "index.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs"
+    }
+  },
   "scripts": {
     "clean": "rm -rf node_modules",
     "lint": "eslint -c ./.eslintrc.json --ignore-path ./.eslintignore 'src/**/*.{js,jsx,tsx,ts,d.ts,cjs,mjs}'",
@@ -23,6 +29,14 @@
     "prepare": "husky install"
   },
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/talkohavy/open-terminal-package"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "restricted"
+  },
   "contributors": [
     {
       "name": "Tal Kohavy",
@@ -30,23 +44,9 @@
       "url": "https://github.com/talkohavy"
     }
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/talkohavy/open-terminal-package"
-  },
-  "author": "Tal Kohavy",
-  "license": "MIT",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "restricted"
-  },
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.cjs"
-    }
-  },
   "bugs": {
+    "author": "Tal Kohavy",
+    "license": "MIT",
     "url": "https://github.com/talkohavy/open-terminal-package/issues",
     "email": "talkohavy@gmail.com"
   },

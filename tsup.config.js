@@ -9,7 +9,7 @@ const tsupConfig = defineConfig((_options) => ({
   // publicDir: './src',
   outDir, // <--- defaults to dist
   // bundle: false, // <--- defaults to true.
-  format: ['esm'], // <-- If package.json type is set to module, the filenames are: [.js,.cjs], else: [.mjs, .js].
+  format: ['esm', 'cjs'], // <-- If package.json type is set to module, the filenames are: [.js,.cjs], else: [.mjs, .js].
   splitting: false, // <--- defaults to true. Code splitting currently only works with the esm output format.
   treeshake: true, // <--- esbuild has tree shaking enabled by default, but sometimes it's not working very well, so tsup offers an additional option to let you use Rollup for tree shaking instead. This flag will enable Rollup for tree shaking.
   clean: true, // <--- Should clean output directory before each build?
