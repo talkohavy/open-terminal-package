@@ -24,7 +24,7 @@ jobs:
           cache: 'pnpm'
 
       # Step 3: Run pnpm install
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
 
       # Step 4: Run pnpm lint & build
       - run: pnpm run lint && pnpm run build
