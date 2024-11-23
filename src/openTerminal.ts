@@ -1,29 +1,20 @@
-import { exec, execSync } from 'child_process';
+import { execSync } from 'child_process';
 import { wait } from './helpers.js';
-
-const execute = {
-  async: exec,
-  sync: execSync,
-};
+import { DebugConfig, TerminalConfig } from './types.js';
 
 type OpenTerminalProps = {
-  config: any;
-  isEncoded?: boolean;
-  isAsync?: boolean;
+  config: TerminalConfig | DebugConfig;
   isDebugMode?: boolean;
   delayNextFor?: number;
 };
 
 export async function openTerminal(props: OpenTerminalProps) {
-  const { config, isEncoded, isAsync, isDebugMode, delayNextFor } = props;
+  const { config, isDebugMode, delayNextFor } = props;
 
-  const mode = isAsync ? 'async' : 'sync';
   const command = isDebugMode ? '/debug' : '';
-  const configAsString = isEncoded ? encodeURIComponent(btoa(JSON.stringify(config))) : JSON.stringify(config);
+  const configAsString = encodeURIComponent(btoa(JSON.stringify(config)));
 
-  execute[mode](
-    `open 'vscode://open.in-terminal${command}?config=${configAsString}${isEncoded ? '&encoded=true' : ''}'`,
-  );
+  execSync(`open 'vscode://open.in-terminal${command}?config=${configAsString}&encoded=true'`);
 
   delayNextFor && (await wait(delayNextFor));
 }
