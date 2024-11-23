@@ -1,6 +1,6 @@
 {
   "name": "open-terminal-programmatically",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "A support package for the vscode extension `Open Terminal Programmatically`",
   "private": "true",
   "main": "index.js",

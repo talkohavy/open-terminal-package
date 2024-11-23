@@ -1,5 +1,11 @@
 # open-terminal-programmatically
 
+## 1.0.0
+
+### Major Changes
+
+- minimized the usage of the main function openTerminal
+
 ## 0.0.6
 
 ### Patch Changes
