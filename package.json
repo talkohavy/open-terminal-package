@@ -3,29 +3,32 @@
   "version": "1.0.0",
   "description": "A support package for the vscode extension `Open Terminal Programmatically`",
   "private": "true",
-  "main": "index.js",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "main": "index.esm.mjs",
+  "module": "index.esm.mjs",
+  "types": "types/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.cjs"
+      "import": {
+        "types": "./types/index.d.ts",
+        "default": "./index.esm.mjs"
+      },
+      "require": {
+        "types": "./types/index.d.ts",
+        "default": "./index.cjs.cjs"
+      }
     }
   },
   "scripts": {
     "clean": "rm -rf node_modules",
     "lint": "eslint -c ./.eslintrc.json --ignore-path ./.eslintignore 'src/**/*.{js,jsx,tsx,ts,d.ts,cjs,mjs}'",
-    "lint-fix": "eslint --fix -c ./.eslintrc.json --ignore-path ./.eslintignore 'src/**/*.{js,jsx,tsx,ts,d.ts,cjs,mjs}'",
+    "lint:fix": "eslint --fix -c ./.eslintrc.json --ignore-path ./.eslintignore 'src/**/*.{js,jsx,tsx,ts,d.ts,cjs,mjs}'",
     "format": "biome format --verbose ./src",
     "format-fix": "biome format --verbose ./src --write",
     "format-prettier": "prettier . --check --config ./.prettierrc.js --ignore-path .prettierignore",
     "format-prettier-fix": "prettier . --write --config ./.prettierrc.js --ignore-path .prettierignore",
     "test": "node --test",
-    "build": "tsup --config tsup.config.js",
-    "preversion": "npm test",
-    "version": "npm run format-prettier-fix && npm run build",
-    "postversion": "git push && git push --tags && cd dist && npm publish",
+    "build": "node ./build.config.js",
     "prepare": "husky install"
   },
   "sideEffects": false,
@@ -52,6 +55,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.2",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
     "@types/node": "^20.11.0",
     "eslint": "^8.54.0",
     "eslint-plugin-ezlint": "^1.6.6",
@@ -59,7 +64,7 @@
     "husky": "^8.0.3",
     "lvlup": "^1.0.3",
     "prettier": "^3.1.0",
-    "tsup": "^8.0.2"
+    "rollup": "^4.34.8"
   },
   "dependencies": {
     "open-terminal-programmatically": "link:"
