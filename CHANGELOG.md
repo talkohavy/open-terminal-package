@@ -1,5 +1,11 @@
 # open-terminal-programmatically
 
+## 1.0.1
+
+### Patch Changes
+
+- Rollup - switched from tsup to using rollup as the package bundler. Now exporting types as well.
+
 ## 1.0.0
 
 ### Major Changes
