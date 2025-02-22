@@ -15,16 +15,19 @@ jobs:
       # Step 2: Set up pnpm
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 10
 
       # Step 3: Set up node
       - uses: actions/setup-node@v3
         with:
-          node-version: 20.x
+          node-version: 22.x
           cache: 'pnpm'
 
-      # Step 3: Run pnpm install
+      # Step 3: print pnpm version
+      - run: pnpm -v
+
+      # Step 4: Run pnpm install
       - run: pnpm install
 
-      # Step 4: Run pnpm lint & build
+      # Step 5: Run pnpm lint & build
       - run: pnpm run lint && pnpm run build
