@@ -1,8 +1,0 @@
-{
-  "root": true,
-  "extends": ["plugin:ezlint/recommended"],
-  "rules": {
-    "sort-exports/sort-exports": "off",
-    "jsdoc/tag-lines": "off"
-  }
-}

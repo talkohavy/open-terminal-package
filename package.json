@@ -21,8 +21,8 @@
   },
   "scripts": {
     "clean": "rm -rf node_modules",
-    "lint": "eslint -c ./.eslintrc.json --ignore-path ./.eslintignore 'src/**/*.{js,jsx,tsx,ts,d.ts,cjs,mjs}'",
-    "lint:fix": "eslint --fix -c ./.eslintrc.json --ignore-path ./.eslintignore 'src/**/*.{js,jsx,tsx,ts,d.ts,cjs,mjs}'",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "format": "biome format --verbose ./src",
     "format-fix": "biome format --verbose ./src --write",
     "format-prettier": "prettier . --check --config ./.prettierrc.js --ignore-path .prettierignore",
@@ -55,16 +55,21 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.2",
+    "@eslint/js": "^9.21.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
-    "@types/node": "^20.11.0",
-    "eslint": "^8.54.0",
-    "eslint-plugin-ezlint": "^1.6.6",
+    "@types/node": "^22.13.5",
+    "eslint": "^9.21.0",
+    "eslint-plugin-perfectionist": "^4.9.0",
+    "eslint-plugin-react-compiler": "19.0.0-beta-21e868a-20250216",
     "glob": "^10.3.10",
+    "globals": "^16.0.0",
     "husky": "^8.0.3",
     "lvlup": "^1.0.3",
     "prettier": "^3.1.0",
-    "rollup": "^4.34.8"
+    "rollup": "^4.34.8",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1"
   },
   "dependencies": {
     "open-terminal-programmatically": "link:"

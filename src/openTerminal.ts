@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
-import { wait } from './helpers.js';
 import type { DebugConfig, TerminalConfig } from './types.js';
+import { wait } from './helpers.js';
 
 export type OpenTerminalProps = {
   config: TerminalConfig | DebugConfig;
@@ -16,5 +16,5 @@ export async function openTerminal(props: OpenTerminalProps) {
 
   execSync(`open 'vscode://open.in-terminal${command}?config=${configAsString}&encoded=true'`);
 
-  delayNextFor && (await wait(delayNextFor));
+  if (delayNextFor) await wait(delayNextFor);
 }
