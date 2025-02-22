@@ -1,5 +1,11 @@
 # open-terminal-programmatically
 
+## 1.0.2
+
+### Patch Changes
+
+- Types weren't exported properly.
+
 ## 1.0.1
 
 ### Patch Changes
