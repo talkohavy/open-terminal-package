@@ -19,6 +19,11 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: [typescript(), terser()],
+  plugins: [
+    typescript({
+      tsconfig: './tsconfig.json',
+    }),
+    terser(),
+  ],
   external: ['child_process'],
 };
