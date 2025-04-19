@@ -39,8 +39,8 @@ async function buildPackageConfig() {
 }
 
 function cleanDistDirectory() {
-  console.log(`${greenColor}- Step 1:${stopColor} clear the dist directory`);
-  execSync('rm -rf dist');
+  console.log(`${greenColor}- Step 1:${stopColor} clear the ${outDirName} directory`);
+  execSync(`rm -rf ${outDirName}`);
 }
 
 function build() {
